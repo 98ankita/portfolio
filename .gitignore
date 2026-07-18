@@ -1,0 +1,10 @@
+.DS_Store
+Mypics/
+*.pyc
+__pycache__/
+assets/_*.png
+assets/thumb*.png
+assets/cand*.mp4
+assets/water_try.mp4
+.venv/
+.env

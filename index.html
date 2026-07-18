@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ankita Doddihal — Data, Products & the Ocean</title>
+  <meta name="description" content="Ankita Doddihal — Senior Product Analyst. 5+ years in data, analytics, and building products. A water baby at heart." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ===================== LIVE WATER SCENE ===================== -->
+  <div class="scene" aria-hidden="true">
+    <div class="bg"></div>
+    <video class="bg-video" id="bgVideo" autoplay muted loop playsinline preload="auto"
+           data-src="assets/water.mp4"></video>
+    <div class="depth-tint"></div>
+    <div class="caustics"></div>
+    <div class="caustics caustics2"></div>
+    <canvas id="bubbles"></canvas>
+  </div>
+
+  <!-- SVG water ripple filter (gives the background a gentle, realistic movement) -->
+  <svg class="svg-defs" width="0" height="0" aria-hidden="true">
+    <filter id="water" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.010 0.016" numOctaves="2" seed="7" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" xChannelSelector="R" yChannelSelector="G" scale="16">
+        <animate attributeName="scale" dur="9s" values="10;22;10" repeatCount="indefinite" calcMode="spline" keySplines="0.45 0 0.55 1; 0.45 0 0.55 1" keyTimes="0;0.5;1"/>
+      </feDisplacementMap>
+    </filter>
+  </svg>
+
+  <main class="content">
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="top">
+      <div class="hero-grid">
+        <div class="intro">
+          <p class="eyebrow">Ankita Doddihal · Seattle, WA</p>
+          <h1>Hi there, I'm <span class="accent">Ankita</span></h1>
+          <p class="lede">
+            It's nice to meet you. I am a Senior Product Analyst at Starbucks.
+            This website is a combination of my work and life.
+          </p>
+
+          <div class="blurb">
+            <h2>My work</h2>
+            <p>
+              I have <span id="yearsExp">5</span>+ years of experience in data,
+              analytics, building and shipping products. I love data visualization
+              and simplifying/automating extensive manual processes. I am skilled in
+              SQL and Data Visualization (Tableau). My work has been a combination of
+              analytics, product management and development, operations, and growth.
+            </p>
+            <p>
+              Exploring how AI can change workflows and shape products. I've built
+              using Cursor, OpenAI (ChatGPT and Codex, OpenAI API), and Claude.
+            </p>
+          </div>
+        </div>
+
+        <div class="portrait">
+          <div class="stay">
+            <span class="stay-label">Let's stay in touch</span>
+            <nav class="links">
+              <a href="https://www.linkedin.com/in/ankita-doddihal-b97004161/" target="_blank" rel="noopener">LinkedIn</a>
+              <a href="https://github.com/98ankita" target="_blank" rel="noopener">GitHub</a>
+              <a href="https://public.tableau.com/app/profile/ankita.doddihal/vizzes" target="_blank" rel="noopener">Tableau</a>
+              <a href="mailto:doddihalankita@gmail.com">Email: doddihalankita@gmail.com</a>
+            </nav>
+          </div>
+
+          <div class="photo-frame">
+            <div class="slideshow" id="slideshow">
+              <img class="slide is-active" src="assets/pic1.jpeg" alt="Ankita" />
+              <img class="slide" src="assets/pic2.jpeg" alt="Ankita" />
+              <img class="slide" src="assets/pic3.jpeg" alt="Ankita" />
+              <img class="slide" src="assets/pic4.jpeg" alt="Ankita" />
+              <img class="slide" src="assets/pic5.jpeg" alt="Ankita" />
+            </div>
+            <div class="slide-dots" id="slideDots"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== A LITTLE ABOUT ME ===================== -->
+    <section class="facets" id="about">
+      <p class="facets-title">A little about me</p>
+      <div class="facet-grid">
+        <div class="facet">
+          <span class="facet-emoji">🧠</span>
+          <h3>Highly analytical</h3>
+        </div>
+        <div class="facet">
+          <span class="facet-emoji">💭</span>
+          <h3>Deep thinker &amp; endlessly curious</h3>
+        </div>
+        <div class="facet">
+          <span class="facet-emoji">🌊</span>
+          <h3>Water baby</h3>
+          <p>Love to swim with fish &amp; paddleboard</p>
+        </div>
+        <div class="facet">
+          <span class="facet-emoji">🎨</span>
+          <h3>Painting &amp; pottery</h3>
+        </div>
+        <div class="facet">
+          <span class="facet-emoji">🏕️</span>
+          <h3>Nature, camping &amp; stargazing</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== EXPLORE (TABS) ===================== -->
+    <section class="explore" id="explore">
+      <div class="tabs" role="tablist">
+        <button class="tab is-active" data-panel="work" role="tab">Work Experience</button>
+        <button class="tab" data-panel="built" role="tab">Things I've Built</button>
+        <button class="tab" data-panel="education" role="tab">Education</button>
+      </div>
+
+      <!-- Panel: Work -->
+      <div class="panel is-active" id="panel-work">
+        <div class="timeline">
+          <article class="job current">
+            <div class="job-dot"></div>
+            <div class="job-head">
+              <img class="job-logo" src="assets/logo-starbucks.png" alt="Starbucks logo" onerror="this.remove()" />
+              <div>
+                <h3>Senior Product Analyst</h3>
+                <p class="job-org">Starbucks · Seattle, WA · Jan 2024 – Present</p>
+              </div>
+            </div>
+            <ul class="job-desc">
+              <li>🌍 Work in International Retail Operations</li>
+              <li>🚀 Built and shipped products across WFM, Inventory Management, Equipment Rightsizing, and continuous scaling and product improvement</li>
+              <li>📊 Built dashboards for Operational KPIs, Customer Experience and Global Tracking; ran EDA and correlation models for programs</li>
+              <li>💥 Impact: 7,000+ stores, automated 50%+ of reporting time, evaluated a $3M program</li>
+            </ul>
+            <div class="skills">
+              <span>SQL</span><span>Tableau</span><span>Python</span><span>Excel</span><span>Product Sense</span><span>UAT</span><span>Roadmapping</span><span>Automation</span>
+            </div>
+          </article>
+
+          <article class="job">
+            <div class="job-dot"></div>
+            <div class="job-head">
+              <img class="job-logo" src="assets/logo-northeastern.png" alt="Northeastern University logo" onerror="this.remove()" />
+              <div>
+                <h3>Customer Experience Analyst</h3>
+                <p class="job-org">Northeastern University · Boston, MA · Dec 2021 – Dec 2023</p>
+              </div>
+            </div>
+            <ul class="job-desc">
+              <li>🎓 Partnered with Northeastern's IT department to lift customer experience and resolution</li>
+              <li>📊 Built Power BI dashboards for feedback monitoring and reporting</li>
+              <li>💥 Impact: +22% customer experience scores, 26% faster resolution time</li>
+            </ul>
+            <div class="skills">
+              <span>ServiceNow</span><span>Python</span><span>Excel</span><span>Customer Experience</span><span>CSAT</span>
+            </div>
+          </article>
+
+          <article class="job">
+            <div class="job-dot"></div>
+            <div class="job-head">
+              <img class="job-logo" src="assets/logo-amazon.png" alt="Amazon logo" onerror="this.remove()" />
+              <div>
+                <h3>Business Intelligence Engineer (Co-op)</h3>
+                <p class="job-org">Amazon Robotics · Jun 2022 – Dec 2022</p>
+              </div>
+            </div>
+            <ul class="job-desc">
+              <li>🤖 Built equipment forecasting tools for Prime Day and math models for Amazon Robotics fulfillment centers</li>
+              <li>⚙️ Improved the process index across operations</li>
+              <li>💥 Impact: 350+ Amazon Robotics sites, 95% statistical-model accuracy, right-sized capacity for Prime Day</li>
+            </ul>
+            <div class="skills">
+              <span>SQL</span><span>Python</span><span>AWS</span><span>Tableau</span><span>QuickSight</span><span>RDS</span><span>Athena</span>
+            </div>
+          </article>
+
+          <article class="job">
+            <div class="job-dot"></div>
+            <div class="job-head">
+              <img class="job-logo" src="assets/logo-merkle.png" alt="Merkle logo" onerror="this.remove()" />
+              <div>
+                <h3>Business Analyst, Growth</h3>
+                <p class="job-org">Merkle Sokrati · Pune, India · Jan 2021 – Jul 2021</p>
+              </div>
+            </div>
+            <ul class="job-desc">
+              <li>🎯 Ran A/B testing and growth for EdTech and eCommerce clients</li>
+              <li>💥 Impact: +36% campaign ROI, −29% cost per transaction, +20% click-through rates</li>
+            </ul>
+            <div class="skills">
+              <span>Google Ads</span><span>Google Analytics</span><span>A/B Testing</span><span>Excel</span><span>Looker</span><span>BigQuery</span>
+            </div>
+          </article>
+
+          <article class="job">
+            <div class="job-dot"></div>
+            <div class="job-head">
+              <div>
+                <h3>Systems Engineer (Intern)</h3>
+                <p class="job-org">Saankhya Labs · Bengaluru, India · Jan 2020 – Jun 2020</p>
+              </div>
+            </div>
+            <ul class="job-desc">
+              <li>🔧 Undergrad internship</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+
+      <!-- Panel: Built -->
+      <div class="panel" id="panel-built">
+        <div class="subtabs" role="tablist">
+          <button class="subtab is-active" data-sub="ai" role="tab">Built with AI</button>
+          <button class="subtab" data-sub="viz" role="tab">Data Visualization</button>
+        </div>
+
+        <div class="subpanel is-active" id="sub-ai">
+          <div class="card-grid">
+            <a class="glass project" href="https://github.com/98ankita/between-sessions-ai" target="_blank" rel="noopener">
+              <div class="project-media"><img src="assets/between-sessions.png" alt="Between Sessions AI app" /></div>
+              <h3>Between Sessions AI</h3>
+              <p>A Streamlit + OpenAI project exploring agentic AI in a mental-wellness context: emotional check-ins, AI reflections, risk-aware routing, and a therapist dashboard.</p>
+              <span class="project-link">View on GitHub →</span>
+            </a>
+            <a class="glass project" href="https://github.com/98ankita/jobstack-radar" target="_blank" rel="noopener">
+              <div class="project-media"><img src="assets/jobstack.png" alt="Job Stack Radar dashboard" /></div>
+              <h3>Job Stack Radar</h3>
+              <p>A personal job radar that scans target companies' ATS boards and filters by role fit, experience, and H-1B signals, with a live dashboard and email digests.</p>
+              <span class="project-link">View on GitHub →</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="subpanel" id="sub-viz">
+          <div class="card-grid">
+            <a class="glass project" href="https://public.tableau.com/app/profile/ankita.doddihal/viz/AmericasFastFoodObsession_16415380974540/AmericasFastFoodObsession" target="_blank" rel="noopener">
+              <div class="project-media"><img src="assets/tableau-fastfood.png" alt="America's Fast Food Obsession Tableau dashboard" /></div>
+              <h3>America's Fast Food Obsession</h3>
+              <p>A visual deep-dive into fast-food trends across the U.S., mapping the who, where, and how much.</p>
+              <span class="project-link">View on Tableau →</span>
+            </a>
+            <a class="glass project" href="https://public.tableau.com/app/profile/ankita.doddihal/viz/MySamsungHealthAnalysis/Story1" target="_blank" rel="noopener">
+              <div class="project-media"><img src="assets/tableau-samsung.png" alt="My Samsung Health Analysis Tableau dashboard" /></div>
+              <h3>My Samsung Health Analysis</h3>
+              <p>A personal-data story turning my own health and activity tracking into insights.</p>
+              <span class="project-link">View on Tableau →</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel: Education -->
+      <div class="panel" id="panel-education">
+        <div class="card-grid">
+          <div class="glass edu">
+            <p class="edu-year">Sep 2021 – May 2023</p>
+            <h3>M.S., Data Analytics Engineering</h3>
+            <p class="edu-school">Northeastern University · Boston, MA</p>
+            <p class="edu-note">Business analytics, databases, and turning messy data into decisions.</p>
+          </div>
+          <div class="glass edu">
+            <p class="edu-year">2016 – 2020</p>
+            <h3>B.Tech, Electronics &amp; Communication</h3>
+            <p class="edu-school">Manipal University Jaipur · India</p>
+            <p class="edu-note">Where the engineering foundations and problem-solving began.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <nav class="links footer-links">
+          <a href="https://www.linkedin.com/in/ankita-doddihal-b97004161/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/98ankita" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://public.tableau.com/app/profile/ankita.doddihal/vizzes" target="_blank" rel="noopener">Tableau</a>
+          <a href="mailto:doddihalankita@gmail.com">Email: doddihalankita@gmail.com</a>
+        </nav>
+      </div>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
