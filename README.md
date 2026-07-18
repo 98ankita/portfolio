@@ -39,6 +39,26 @@ automatically falls back to the animated CSS water — nothing breaks.
 - To use your own clip: replace `assets/water.mp4` with any looping `.mp4`.
 - To regenerate the synthesized loop: `python3 make_water.py`
 
-## Deploy
+## Publish / Deploy
 
-Works as-is on **GitHub Pages**, **Netlify**, or **Vercel** — just upload the folder.
+This is a static site (`index.html` at the root). Two easy options:
+
+### Option A — Netlify Drop (fastest, no Git needed)
+1. Open [app.netlify.com/drop](https://app.netlify.com/drop)
+2. Drag this whole project folder onto the page
+3. You'll get a live `*.netlify.app` URL (you can rename it in Site settings)
+
+### Option B — GitHub Pages
+1. Create a new public repo on GitHub (e.g. `portfolio` under `98ankita`)
+2. From this folder, run:
+
+```bash
+git remote add origin https://github.com/98ankita/portfolio.git
+git push -u origin main
+```
+
+3. On GitHub: **Settings → Pages → Deploy from branch → `main` / root (/) → Save**
+4. Site will be at `https://98ankita.github.io/portfolio/`
+
+If you use a project-pages URL (not a custom domain / username.github.io root),
+paths are already relative (`assets/...`), so no further changes are needed.
