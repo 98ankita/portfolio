@@ -32,12 +32,6 @@
   v.src = src; // triggers load; errors fall back gracefully
 })();
 
-/* ---- Footer year ---- */
-(function setYear() {
-  const el = document.getElementById('year');
-  if (el) el.textContent = new Date().getFullYear();
-})();
-
 /* ---- Tabs (Work / Education / Things I've Built) ---- */
 (function tabs() {
   const tabEls = document.querySelectorAll('.tab');

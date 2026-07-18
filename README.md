@@ -1,64 +1,24 @@
-# 🌊 Ankita Doddihal — Ocean Portfolio
+# Ankita Doddihal — Portfolio
 
-A cute, colorful underwater-themed personal portfolio. Simple, crisp content;
-animated fishes, a whale, jellyfish, seashells, and rising bubbles.
+Ocean-themed personal portfolio. Plain HTML, CSS, and JavaScript — no build step.
 
-Built with plain **HTML + CSS + JavaScript** — no build step, no dependencies.
-
-## Run it
-
-Just open `index.html` in a browser. Or serve locally:
+## Run locally
 
 ```bash
 python3 -m http.server 8000
 # then visit http://localhost:8000
 ```
 
-## Customize (look for `TODO` in the files)
+## Moving-water background
 
-- **Your photo** → drop it in `assets/` as `ankita.jpg` (round bubble on the hero).
-  To use a different name/format, update the `src` in `index.html`.
-- **Experience** → edit the `.timeline` section in `index.html` (Starbucks is set;
-  duplicate the job template for earlier roles).
-- **Tableau projects** → update the two `.card.tableau` titles + links.
-- **GitHub projects** → update the two `.card.github` links (descriptions are written).
-- **Contact** → set your GitHub URL and email in the footer (`#contact`).
+The background uses `assets/water.mp4` (generated from `assets/bg-ocean.png` by
+`make_water.py`). If that file is missing, the site falls back to animated CSS water.
 
-## Auto-updating years of experience
+- Replace `assets/water.mp4` with any looping clip, or run `python3 make_water.py`
+  to regenerate it.
 
-The "5+ years" number lives in `script.js` and **increments automatically every
-January 1st**. It's anchored at 5 years as of 2026, so it becomes 6 in 2027, and
-so on — no manual edits needed.
+## Publish on GitHub Pages
 
-## Moving-water background video
-
-The background uses a looping clip at `assets/water.mp4` (generated from
-`assets/bg-ocean.png` by `make_water.py`). If that file is ever missing, the site
-automatically falls back to the animated CSS water — nothing breaks.
-
-- To use your own clip: replace `assets/water.mp4` with any looping `.mp4`.
-- To regenerate the synthesized loop: `python3 make_water.py`
-
-## Publish / Deploy
-
-This is a static site (`index.html` at the root). Two easy options:
-
-### Option A — Netlify Drop (fastest, no Git needed)
-1. Open [app.netlify.com/drop](https://app.netlify.com/drop)
-2. Drag this whole project folder onto the page
-3. You'll get a live `*.netlify.app` URL (you can rename it in Site settings)
-
-### Option B — GitHub Pages
-1. Create a new public repo on GitHub (e.g. `portfolio` under `98ankita`)
-2. From this folder, run:
-
-```bash
-git remote add origin https://github.com/98ankita/portfolio.git
-git push -u origin main
-```
-
-3. On GitHub: **Settings → Pages → Deploy from branch → `main` / root (/) → Save**
-4. Site will be at `https://98ankita.github.io/portfolio/`
-
-If you use a project-pages URL (not a custom domain / username.github.io root),
-paths are already relative (`assets/...`), so no further changes are needed.
+1. Push this repo to GitHub (GitHub Desktop or `git push`)
+2. **Settings → Pages → Deploy from a branch → `main` / `/ (root)` → Save**
+3. Site URL: `https://98ankita.github.io/<repo-name>/`
